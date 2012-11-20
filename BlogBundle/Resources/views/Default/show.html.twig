@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Webpage</title>
+    </head>
+    <body>
+        <h1>{{ post.getTitle() }}</h1>
+        <p>{{post.getBody()}}</p>
+        <hr/>
+        <small>Запись создана {{ post.getCreatedDate().format("Y-m-d H:i:s")}} </small>
+    </body>
+</html>
