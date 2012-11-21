@@ -11,8 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
-     * @Template()
+     *
+     * @param type $name
+     * @Template
+     * @return type 
      */
     public function indexAction($name)
     {
@@ -20,8 +22,9 @@ class DefaultController extends Controller
     }
 
     /**
-    * @Route("/create")
-    */
+     *
+     * @return Response 
+     */
     public function createAction() {
         $post = new Post();
         $post->setTitle('Demo Blog');
@@ -37,8 +40,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/show/{id}")
-     * @Template()
+     *
+     * @param type $id
+     * @return type 
      */
     public function showAction($id)
     {
@@ -48,8 +52,9 @@ class DefaultController extends Controller
             throw $this->createNotFoundException('Страница не найдена!');
         }
         
-        return array('post' => $post);
-
+//        return array('post' => $post);
+        $response = $this->render('AcmeBlogBundle:Default:show.html.twig', array('post' => $post));
+        return $response;
 //        return new Response($html);
     }    
 }

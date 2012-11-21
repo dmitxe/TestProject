@@ -9,32 +9,38 @@ use Doctrine\ORM\Mapping as ORM;
 */
 class Post {
 
-/**
-* @ORM\Id
-* @ORM\Column(type="integer")
-* @ORM\GeneratedValue(strategy="AUTO")
-*/
-protected $id;
+    /**
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
+    protected $id;
 
-/**
-* @ORM\Column(type="string", length=255)
-*/
-protected $title;
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */    
+    public $user;
+    
+    /**
+    * @ORM\Column(type="string", length=255)
+    */
+    protected $title;
 
-/**
-* @ORM\Column(type="text")
-*/
-protected $body;
+    /**
+    * @ORM\Column(type="text")
+    */
+    protected $body;
 
-/**
-* @ORM\Column(type="datetime")
-*/
-protected $created_date;
+    /**
+    * @ORM\Column(type="datetime")
+    */
+    protected $created_date;
 
-/**
-* @ORM\Column(type="datetime")
-*/
-protected $updated_date;
+    /**
+    * @ORM\Column(type="datetime")
+    */
+    protected $updated_date;
 
     /**
      * Get id
@@ -46,6 +52,7 @@ protected $updated_date;
         return $this->id;
     }
 
+   
     /**
      * Set title
      *
